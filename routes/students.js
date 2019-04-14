@@ -18,7 +18,6 @@ router.post('/register', function(req, res, next) {
       } else {
         res.json(data._id);
       }
-      
     })
   });
 });
@@ -37,7 +36,7 @@ router.post('/authenticate', function(req,res,next) {
         if(err) {
           res.json(err);
         } else {
-          res.json(data._id);
+          res.json(data);
         }
       });
     }
@@ -60,4 +59,24 @@ router.put('/:id', function(req,res,next) {
 
   });
 })
+
+router.get('/', (req,res,next) => {
+  Student.find({},(err,data) => {
+    if(err) {
+      res.json(err);
+    } else {
+      res.json(data);
+    }
+  });
+});
+router.post('/enable/:id',(req,res) => {
+  Student.findByIdAndUpdate(req.params.id, req.body, {new:true}, (err,data) => {
+    if(err) {
+      res.json(err);
+    } else {
+      res.json(true);
+    }
+  });
+});
+
 module.exports = router;
