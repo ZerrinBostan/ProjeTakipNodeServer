@@ -4,7 +4,6 @@ const bcrypt = require('bcryptjs');
 const Student = require('../models/student');
 /* GET users listing. */
 router.post('/register', function(req, res, next) {
-  console.log(req.body);
   const{studentNumber,password,...rest} = req.body;
   bcrypt.hash(password,10, (err, hash) => {
     if(err) return err;
@@ -17,7 +16,7 @@ router.post('/register', function(req, res, next) {
       if(err)  {
         res.json(err) 
       } else {
-        res.json(true);
+        res.json(data._id);
       }
       
     })
@@ -38,10 +37,27 @@ router.post('/authenticate', function(req,res,next) {
         if(err) {
           res.json(err);
         } else {
-          res.json(success);
+          res.json(data._id);
         }
       });
     }
   });
 });
+
+router.get('/:id', function(req,res,next) {
+  const id = req.params.id;
+  Student.findById(id, (err,data) => {
+    if(err) {
+      res.json(err) 
+    } else {
+      res.json(data);
+    }
+  });
+});
+router.put('/:id', function(req,res,next) {
+  const data = req.body;
+  Student.findByIdAndUpdate(req.params.id, data, {new:true}, (err,data) => {
+
+  });
+})
 module.exports = router;
