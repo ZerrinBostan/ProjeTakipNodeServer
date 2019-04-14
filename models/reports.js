@@ -3,7 +3,7 @@ const mongoose = require('mongoose'),
 
 const reportModel = new Schema({
       no: Number,
-      studentId: Number,
+      studentId: String,
       name: String,
       surname: String,
       revisionNumber: Number,
