@@ -21,6 +21,15 @@ router.get('/:id', (request,response) => {
         }
     });
 });
+router.get('/reports/:id', (request,response) => {
+    Reports.find({studentId: request.params.id}, (err,data) => { //urlden gelen değeri getiriyor
+        if(err) {
+            response.json(err);
+        } else {
+            response.json(data);
+        }
+    });
+});
 
 router.post('/', (request,response) => {
     const reportModel = new Reports(request.body);
