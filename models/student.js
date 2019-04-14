@@ -10,7 +10,8 @@ const studentModel = new Schema({
     studentNumber: Number,
     studentClass: String,
     studentClassGroup: String,
-    password: String
+    password: String,
+    isEnabled: Boolean,
 });
 
 module.exports = mongoose.model('student',studentModel);

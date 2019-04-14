@@ -12,7 +12,7 @@ router.get('/', (request, response) => {
 });
 
 router.get('/:id', (request,response) => {
-    Project.findById(request.params.id, (err,data) => {
+    Project.findById(request.params.id, (err,data) => { //urlden gelen değeri getiriyor
         if(err) {
             response.json(err);
         } else {
