@@ -48,4 +48,14 @@ router.delete('/:id', (request, response) => {
     });
 });
 
+router.get('/projects/:id', (req,res) => {
+    Project.find({studentId: req.params.id}, (err,data) => {
+        if(err) {
+            res.json(err);
+        } else {
+            res.json(data);
+        }
+    });
+});
+
 module.exports = router;
