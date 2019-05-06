@@ -56,7 +56,11 @@ router.get('/:id', function(req,res,next) {
 router.put('/:id', function(req,res,next) {
   const data = req.body;
   Student.findByIdAndUpdate(req.params.id, data, {new:true}, (err,data) => {
-
+    if(err) {
+      res.json(err);
+    } else {
+      res.json(data);
+    }
   });
 })
 
@@ -75,6 +79,16 @@ router.post('/enable/:id',(req,res) => {
       res.json(err);
     } else {
       res.json(true);
+    }
+  });
+});
+router.get('/projects/:id', (req,res) => {
+  Student.find({projectId: req.params.id}, (err,data) => {
+    if(err) {
+      res.json(err);
+    }
+    else {
+      res.json(data);
     }
   });
 });

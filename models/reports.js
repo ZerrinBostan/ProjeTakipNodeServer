@@ -8,7 +8,8 @@ const reportModel = new Schema({
       surname: String,
       revisionNumber: Number,
       date: Date,
-      description: String      
+      description: String,
+      projectId: String  
 });
 
 module.exports = mongoose.model('report',reportModel);

@@ -22,7 +22,7 @@ router.get('/:id', (request,response) => {
     });
 });
 router.get('/reports/:id', (request,response) => {
-    Reports.find({studentId: request.params.id}, (err,data) => { //urlden gelen değeri getiriyor
+    Reports.find({studentId: request.params.id}, (err,data) => { 
         if(err) {
             response.json(err);
         } else {

@@ -23,8 +23,8 @@ router.get('/:id', (request,response) => {
 
 router.post('/', (request,response) => {
     const projectModel = new Project(request.body);
-    projectModel.save().then(() => {
-        response.json('Saved successfull');
+    projectModel.save().then((data) => {
+        response.json(data);
     });
 });
 
