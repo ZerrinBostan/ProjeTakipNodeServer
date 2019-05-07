@@ -6,7 +6,6 @@ require('dotenv').config();
 const cors = require('cors');
 
 const db = require('./helper/db')();
-const indexRouter = require('./routes/index');
 const studentsRouter = require('./routes/students');
 const projectsRouter = require('./routes/projects');
 const reportsRouter = require('./routes/reports');
@@ -21,9 +20,9 @@ app.use(logger('dev'));
 app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
 app.use(cookieParser());
-app.use(express.static(path.join(__dirname, 'public')));
+app.use(express.static(path.join(__dirname, 'dist/projeAngular')));
+app.use('/', express.static(path.join(__dirname, 'dist/projeAngular')));
 
-app.use('/', indexRouter);
 app.use('/admin', adminRouter);
 app.use('/students', studentsRouter);
 app.use('/projects', projectsRouter); 

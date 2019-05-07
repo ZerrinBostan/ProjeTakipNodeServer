@@ -33,8 +33,8 @@ router.get('/reports/:id', (request,response) => {
 
 router.post('/', (request,response) => {
     const reportModel = new Reports(request.body);
-    reportModel.save().then(() => {
-        response.json('Saved successfull');
+    reportModel.save().then((data) => {
+        response.json(data);
     });
 });
 

@@ -19,5 +19,4 @@ router.post('/', (req,res) => {
         res.json(data);
     })
 });
-
 module.exports = router;
